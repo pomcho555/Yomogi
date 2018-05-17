@@ -23,9 +23,9 @@ Python用の前処理用MeCabラッパーです。
 - mecab-ipadic-neologd
 
 ## Get Started,
-`git clone https://github.com/pomcho555/Yomogi.git`
-`cd <installed directory>`
-`pip install -e .`
+`git clone https://github.com/pomcho555/Yomogi.git`  
+`cd <installed directory>`  
+`pip install -e .`  
 
 ## BoWオブジェクトとは
 BoW(Bag of Words)とは単語の袋の意で、単語とその頻度を格納したデータを指します。
@@ -46,6 +46,8 @@ BoWオブジェクトはBoW形式のデータを扱いやすくしたもので�
 - BoWの中身をlist型で吐き出す  
 `print(bow1.sentences)`
 
-***
 ## 謝辞
 このプロジェクトは[nlp_jp_template](https://github.com/kazuhirokomoda/nlp_jp_template)のフォークプロジェクトです。
+
+## ライセンス 
+このプロジェクトはMITライセンスに準じてます。
