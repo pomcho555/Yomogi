@@ -48,13 +48,6 @@ class Word_group():
             words = [y for x in words for y in x]
         return words
 
-    #
-    # def __add__(self,target_word):
-    #     return self.matrix.update(target_word.text:target_word.POS})
-    #
-    # def __sub__(self, target_word):
-    #     return self.matrix.pop({target_word.text:target_word.POS})
-
 def _count(sentences):
     """
     create BoW
@@ -87,17 +80,7 @@ class BoW():
         else:
             self.bow = sentences
             self.sentences = _assign(sentences)
-        #bow = self.bow
-
-    # def add(self,BoW):
-    #     print('s',self.bow)
-    #     print(self.bow['テスト'])
-    #     for word in self.bow:
-    #         print(word)
-    #         print(self.bow[word])
-    #         print(BoW.bow[word])
-    #         self.bow[word] += BoW.bow[word]
-    #     return self.bow
+        
 
     def __add__(self,target_BoW):
         #excute deep copy to copy dict type object
@@ -152,18 +135,6 @@ def normalize(sentences: list) -> list:
     from normalize_neologd import normalize_neologd
     return normalize_neologd(sentences)
 
-# def count(word_list: list) -> list:
-#     """
-#     create BoW
-#     input 1 or 2-dim list
-#     """
-#     word_list = _filter_list(word_list)
-#     BoW = {}
-#     print(word_list)
-#     for word in word_list:
-#         BoW[word] = BoW.get(word, 0) + 1
-#     return BoW
-
 def convert_to_sentences(text: str) -> str:
     import re
     sentences = re.split('[.。]', text)
@@ -171,50 +142,14 @@ def convert_to_sentences(text: str) -> str:
 
 
 
-# def devide(sentences):
-#     from word_divider import WordDivider
-#     wd = WordDivider(is_normalize=True, remove_stopwords=True)
-#     documents_divided = []
-#     with open(text_path_train_test, encoding='utf-8') as a_file:
-#         for a_line in a_file:
-#             documents_divided.append(wd.extract_words(a_line))
-#             print(documents_divided)
-# class Test:
-#     def test():
-#         return 'in class'
-
 if __name__ == '__main__':
     text_path_train_test = 'data/simple.txt'
     from word_divider import make_documents_from_file
     documents = make_documents_from_file(text_path_train_test)
-    p=extract(documents,'名詞')
-    print(type(p))
-    bow_test = BoW(p)
+    extracted_list=extract(documents,'名詞')
+    bow_test = BoW(extracted_list)
     print(bow_test.bow)
-    # word1 = Word('orange', 'noun')
-    # word2 = Word('apple','noun')
-    # wg = Word_group()
-    # wg.add_word(word2)
-    # print(wg)
-    # print(wg.matrix)
-    # wg.add_word(word1)
-    # print(wg.matrix)
-    wl = []
     w_list = [['テスト'], ['テスト', '文章'], ['人生']]
-
     bow1 = BoW(w_list)
     bow2 = BoW(w_list)
-    #print(bow1.bow,bow2.bow)
-    print((bow1+bow1).bow)
-    bow3 = BoW({'テスト': 1, '文章': 1, '人生': 2})
-    print(bow3.sentences)
-    print(type(bow3.sentences))
-    print((bow1+bow3).bow)
-    print(bow3.bow)
-    print((bow1-bow3).bow)
-    print((bow1-bow3).sentences)
-    # print(bow1.bow)
-    #
-    # print(bow3.bow)
-    a = '閣僚の首席を表す言葉は各国においてそれぞれ違いがある。後述する通り様々に日本語訳されている.それらの通称・普通名詞として首相が使われている。'
-    print(convert_to_sentences(a))
+    assert {'テスト':4, '文章':1, '人生':1} == (bow1+bow1).bow
