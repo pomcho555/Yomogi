@@ -1,8 +1,8 @@
 # Yomogi
 
 Python用の前処理用MeCabラッパーです。
-***
-##できること
+
+## できること
 -単語の統一
 -記号・数字の除去
 -分かち書き（形態素解析）
@@ -11,28 +11,28 @@ Python用の前処理用MeCabラッパーです。
 -レンマ化
 -BoWのオブジェクトの作成
 
-##できないこと
+## できないこと
 -ステミング
 -単語の分散表現化
--日本語以外の言語処理
+-日本語以外の言語処理  
 ***
-##前提条件
+## 前提条件
 -Python3.5+
 -mecab-python3
 -Mecab
 -mecab-ipadic-neologd
-***
-##Get Started,
+
+## Get Started,
 `git clone https://github.com/pomcho555/Yomogi.git`
 `cd <installed directory>`
 `pip install -e .`
-***
-##BoWオブジェクトとは
+
+## BoWオブジェクトとは
 BoW(Bag of Words)とは単語の袋の意で、単語とその頻度を格納したデータを指します。
 BoWオブジェクトはBoW形式のデータを扱いやすくしたもので、BoWに対して和・差がとれます。
 また、dict型とlist型の２つのデータ構造を持つので、柔軟に使えると思います。
 
-##Quick Tutorial
+## Quick Tutorial
 -よもぎをimport
 `import yomogi`
 -文章のリストを作成
@@ -46,6 +46,6 @@ BoWオブジェクトはBoW形式のデータを扱いやすくしたもので�
 -BoWの中身をlist型で吐き出す
 `print(bow1.sentences)`
 
-
-#謝辞
+***
+## 謝辞
 このプロジェクトは[nlp_jp_template](https://github.com/kazuhirokomoda/nlp_jp_template)のフォークプロジェクトです。
