@@ -35,7 +35,6 @@ class Word_group():
 
     def add_words(self,words):
         words = _filter_list(words)
-        print(words)
         for word in words:
             word_object  = Word(word,'名詞')
             self.add_word(word_object)
@@ -72,15 +71,20 @@ def _assign(bow: dict) -> dict:
 
 
 class BoW():
-    def __init__(self ,sentences):
-        if type(sentences) == list:
-            sentences = _filter_list(sentences)
+    def __init__(self ,*arg):
+        if not arg:
+            """make empty BoW object"""
+            self.bow = {}
+            self.sentences = []
+        elif type(arg[0]) == list:
+            sentences = _filter_list(arg[0])
             self.sentences = sentences
             self.bow = _count(sentences)
-        else:
-            self.bow = sentences
-            self.sentences = _assign(sentences)
-        
+        elif type(arg[0]) == dict:
+            self.bow = arg[0]
+            self.sentences = _assign(arg[0])
+
+
 
     def __add__(self,target_BoW):
         #excute deep copy to copy dict type object
@@ -97,7 +101,6 @@ class BoW():
             import copy
             a = copy.deepcopy(self.bow)
             b = copy.deepcopy(target_BoW.bow)
-            print(a,b)
             if(len(a)<len(b)):raise TypeException
         except TypeException:
             print('substracted argument must be smaller')
@@ -128,7 +131,6 @@ def extract(sentences, POS):
     documents_divided = []
     for a_line in sentences:
         documents_divided.append(wd.extract_words(a_line))
-        print(documents_divided)
     return documents_divided
 
 def normalize(sentences: list) -> list:
@@ -152,4 +154,11 @@ if __name__ == '__main__':
     w_list = [['テスト'], ['テスト', '文章'], ['人生']]
     bow1 = BoW(w_list)
     bow2 = BoW(w_list)
-    assert {'テスト':4, '文章':1, '人生':1} == (bow1+bow1).bow
+    assert {'テスト':4, '文章':2, '人生':2} == (bow1+bow1).bow
+    bow100 = BoW({'テスト':4, '文章':1, '人生':1})
+    print(bow100.bow)
+    print(bow100.sentences)
+    bow3 = BoW()
+    for x in range(2):
+        bow3 += bow1
+    assert {'文章': 2, 'テスト': 4, '人生': 2} == bow3.bow
