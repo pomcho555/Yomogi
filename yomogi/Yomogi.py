@@ -63,7 +63,6 @@ def _filter_list(sentences):
     return sentences
 
 def _assign(bow: dict) -> dict:
-    #bowの数だけ単語を複製しないとだめ
     sentences = []
     for word in bow:
         sentences.append([word] * bow.get(word))
