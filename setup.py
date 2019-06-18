@@ -14,9 +14,9 @@ if sys.version_info < (3, 5):
 
 setup(name='yomogi',
       version='0.1.0',
-      description='Pure python library for data envelopment analysis.',
+      description='MeCab wrapper for python3.',
       #long_description=yomogi.__doc__,
-      url='http://github.com/jzuccollo/yomogi',
+      url='http://github.com/pomcho555/yomogi',
       author='pomcho555',
       author_email='',
       license='None',
