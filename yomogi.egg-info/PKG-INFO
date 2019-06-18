@@ -2,7 +2,7 @@ Metadata-Version: 1.0
 Name: yomogi
 Version: 0.1.0
 Summary: Pure python library for data envelopment analysis.
-Home-page: http://github.com/jzuccollo/yomogi
+Home-page: http://github.com/pomcho555/yomogi
 Author: pomcho555
 Author-email: UNKNOWN
 License: None
